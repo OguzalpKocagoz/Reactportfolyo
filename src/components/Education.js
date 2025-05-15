@@ -8,12 +8,44 @@ import { FaGraduationCap, FaUniversity, FaUsers } from 'react-icons/fa';
 const EducationSection = styled.section`
   min-height: 100vh;
   padding: 100px 20px;
-  background: linear-gradient(180deg, #0a192f 0%, #112240 50%, #1a1f4d 100%);
+  background: linear-gradient(180deg, 
+    #1a1f4d 0%,
+    #172044 15%,
+    #142339 30%,
+    #112240 50%,
+    #0e1c3a 70%,
+    #0b1832 85%,
+    #0a192f 100%
+  );
   position: relative;
   overflow: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 200px;
+    background: linear-gradient(180deg, rgba(26, 31, 77, 0.95) 0%, transparent 100%);
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 200px;
+    background: linear-gradient(0deg, rgba(10, 25, 47, 0.95) 0%, transparent 100%);
+    pointer-events: none;
+    z-index: 1;
+  }
 `;
 
 const Container = styled.div`

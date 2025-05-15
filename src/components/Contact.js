@@ -9,7 +9,40 @@ const StyledContactSection = styled(motion.section)`
   align-items: center;
   justify-content: center;
   padding: 100px 20px;
-  background: linear-gradient(90deg, #0a192f 0%, #1a1f4d 100%);
+  background: linear-gradient(90deg, 
+    #0a192f 0%,
+    #0c1b34 20%,
+    #0e1d3a 40%,
+    #112240 60%,
+    #141f45 80%,
+    #1a1f4d 100%
+  );
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 200px;
+    background: linear-gradient(180deg, rgba(10, 25, 47, 0.95) 0%, transparent 100%);
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 200px;
+    background: linear-gradient(0deg, rgba(26, 31, 77, 0.95) 0%, transparent 100%);
+    pointer-events: none;
+    z-index: 1;
+  }
 `;
 
 const ContactContainer = styled.div`

@@ -15,7 +15,15 @@ import {
 const SkillsSection = styled.section`
   min-height: 100vh;
   padding: 100px 20px;
-  background: linear-gradient(180deg, #1a1f4d 0%, #112240 50%, #0a192f 100%);
+  background: linear-gradient(180deg, 
+    #0a192f 0%,
+    #0b1832 15%,
+    #0e1c3a 30%,
+    #112240 50%,
+    #142339 70%,
+    #172044 85%,
+    #1a1f4d 100%
+  );
   position: relative;
   overflow: hidden;
   display: flex;
@@ -28,9 +36,10 @@ const SkillsSection = styled.section`
     top: 0;
     left: 0;
     right: 0;
-    height: 150px;
-    background: linear-gradient(180deg, rgba(26, 31, 77, 0.95) 0%, transparent 100%);
+    height: 200px;
+    background: linear-gradient(180deg, rgba(10, 25, 47, 0.95) 0%, transparent 100%);
     pointer-events: none;
+    z-index: 1;
   }
 
   &::after {
@@ -39,9 +48,10 @@ const SkillsSection = styled.section`
     bottom: 0;
     left: 0;
     right: 0;
-    height: 150px;
-    background: linear-gradient(0deg, rgba(10, 25, 47, 0.95) 0%, transparent 100%);
+    height: 200px;
+    background: linear-gradient(0deg, rgba(26, 31, 77, 0.95) 0%, transparent 100%);
     pointer-events: none;
+    z-index: 1;
   }
 `;
 
@@ -50,7 +60,7 @@ const SkillsContainer = styled.div`
   width: 100%;
   margin: 0 auto;
   position: relative;
-  z-index: 1;
+  z-index: 2;
 `;
 
 const Title = styled(motion.h2)`

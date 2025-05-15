@@ -10,8 +10,66 @@ const HeroSection = styled.section`
   align-items: center;
   justify-content: center;
   padding: 100px 20px;
-  background: linear-gradient(135deg, #0a192f 0%, #112240 100%);
+  background: linear-gradient(
+    135deg,
+    #0a192f 0%,
+    #0d1c37 25%,
+    #112240 50%,
+    #162a54 75%,
+    #1a1f4d 100%
+  );
   position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(
+      circle at 50% 50%,
+      rgba(100, 255, 218, 0.03) 0%,
+      rgba(100, 255, 218, 0.01) 25%,
+      transparent 50%
+    );
+    pointer-events: none;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+      linear-gradient(45deg, 
+        rgba(100, 255, 218, 0.05) 0%,
+        transparent 45%
+      ),
+      linear-gradient(135deg, 
+        transparent 55%,
+        rgba(100, 255, 218, 0.05) 100%
+      );
+    pointer-events: none;
+  }
+
+  .bottom-fade {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 250px;
+    background: linear-gradient(
+      to bottom,
+      transparent,
+      #0a192f
+    );
+    pointer-events: none;
+    z-index: 1;
+  }
 `;
 
 const HeroContainer = styled.div`
@@ -21,6 +79,8 @@ const HeroContainer = styled.div`
   align-items: center;
   justify-content: space-between;
   gap: 2rem;
+  position: relative;
+  z-index: 2;
 
   @media (max-width: 968px) {
     flex-direction: column;
@@ -109,6 +169,7 @@ const Hero = () => {
           />
         </AnimationContainer>
       </HeroContainer>
+      <div className="bottom-fade" />
     </HeroSection>
   );
 };
