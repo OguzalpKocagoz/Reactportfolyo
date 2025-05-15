@@ -105,7 +105,6 @@ const MobileMenuButton = styled.button`
 `;
 
 const MobileMenu = styled(motion.div)`
-  display: none;
   position: fixed;
   top: 70px;
   left: 0;
@@ -114,9 +113,11 @@ const MobileMenu = styled(motion.div)`
   padding: 1rem;
   backdrop-filter: blur(10px);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  visibility: ${({ isOpen }) => (isOpen ? 'visible' : 'hidden')};
+  z-index: 999;
 
   @media (max-width: 768px) {
-    display: ${({ isOpen }) => (isOpen ? 'block' : 'none')};
+    display: block;
   }
 
   @media (max-width: 480px) {
@@ -166,6 +167,18 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, [scrolled]);
 
+  // Mobil menü açıkken scroll'u engelle
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [isOpen]);
+
   return (
     <>
       <Nav
@@ -185,7 +198,11 @@ const Navbar = () => {
           <NavLink href="#projects">Projeler</NavLink>
           <NavLink href="#contact">İletişim</NavLink>
         </NavLinks>
-        <MobileMenuButton onClick={() => setIsOpen(!isOpen)}>
+        <MobileMenuButton 
+          onClick={() => setIsOpen(!isOpen)}
+          aria-expanded={isOpen}
+          aria-label="Menüyü aç/kapat"
+        >
           {isOpen ? '✕' : '☰'}
         </MobileMenuButton>
       </Nav>
@@ -193,8 +210,14 @@ const Navbar = () => {
       <MobileMenu
         isOpen={isOpen}
         initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: isOpen ? 1 : 0, y: isOpen ? 0 : -20 }}
-        transition={{ duration: 0.3 }}
+        animate={{ 
+          opacity: isOpen ? 1 : 0,
+          y: isOpen ? 0 : -20,
+          transition: {
+            duration: 0.3,
+            ease: "easeInOut"
+          }
+        }}
       >
         <MobileNavLink href="#home" onClick={() => setIsOpen(false)}>
           Ana Sayfa
