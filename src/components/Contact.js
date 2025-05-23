@@ -300,7 +300,7 @@ const Contact = React.memo(() => {
           <ContactInfoList>
             <ContactInfoItem>
               <FaEnvelope />
-              <span>kocagologuzalp@gmail.com</span>
+              <span>kocagozoguzalp@gmail.com</span>
             </ContactInfoItem>
             <ContactInfoItem>
               <FaPhone />
